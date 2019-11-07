@@ -34,8 +34,8 @@
 		<input type="text" id="node-config-input-auth-url">
 	</div>
 	<div class="form-row node-config-input-useAuth-row">
-		<label for="node-config-input-auth-port"><i class="fa fa-auth-port"></i> <span>auth-port</span></label>
-		<input type="text" id="node-config-input-auth-port">
+		<label for="node-config-input-auth-authorization-header"><i class="fa fa-auth-authorization-header"></i> <span>auth-authorization-header</span></label>
+		<input type="text" id="node-config-input-auth-authorization-header">
 	</div>
 	<div class="form-row node-config-input-useAuth-row">
 		<label for="node-config-input-user"><i class="fa fa-user"></i> <span>username</span></label>
@@ -292,7 +292,7 @@ The output message contains the following properties:
 	        url: { value: ""},
 	        port: {value: "", validate:RED.validators.number(), required: true}
 	        auth-url: { value: "", required: false},
-	        auth-port: {value: "", validate:RED.validators.number(), required: false}
+	        auth-authorization-header: {value: "", required: false}
 	    },
 	    credentials: {
 	    	user: {type:"text", required: false},
@@ -317,11 +317,13 @@ The output message contains the following properties:
 					$('#node-config-input-user').val('');
 					$('#node-config-input-password').val('');
 					$('#node-config-input-auth-url').val('');
+					$('#node-config-input-auth-authorization-header').val('');
 					$(".node-config-input-useAuth-row").show();
 				} else {
 					$('#node-config-input-user').val('');
 					$('#node-config-input-password').val('');
 					$('#node-config-input-auth-url').val('');
+					$('#node-config-input-auth-authorization-header').val('');
 					$(".node-config-input-useAuth-row").hide();
 				}
 			});
@@ -334,6 +336,7 @@ The output message contains the following properties:
 				$('#node-config-input-user').val('');
 				$('#node-config-input-password').val('');
 				$('#node-config-input-auth-url').val('');
+				$('#node-config-input-auth-authorization-header').val('');
 			}
         }
 	});
