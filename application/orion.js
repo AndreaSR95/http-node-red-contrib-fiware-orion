@@ -47,6 +47,8 @@ module.exports = function(RED) {
         
         this.url = n.url;
         this.port = n.port;
+        this.auth-url = n.auth-url;
+        this.auth-authorization-header = n.auth-authorization-header;
         var orionUrl = getOrionUrl(n);
 		var credentials = this.credentials;
 
@@ -73,7 +75,7 @@ module.exports = function(RED) {
     		
         	return when.promise(function(resolve,reject) {
     	        // get token from context broker
-    	    	getToken(node, serviceNode.url, credentials).then(function(){
+    	    	getToken(node, serviceNode.url, serviceNode.auth-url, serviceNode.auth-authorization-header, credentials).then(function(){
     	    		console.log("validating broker connectivity");
     	    		validateOrionConnectivity(node, orionUrl).then(function(){
     	    			console.log("cleaning up");
@@ -287,8 +289,8 @@ module.exports = function(RED) {
 	}
 
     // retrieve token from context broker
-	function getToken(node, orionUrl, credentials) {
-		var tokenUrl = orionUrl + "/token";
+	function getToken(node, orionUrl, auth-url, auth-authorization-header, credentials) {
+		var tokenUrl = auth-url + "/token";
 		if (tokenUrl.indexOf("http://") >= 0){
 			tokenUrl = "https://" + tokenUrl.substring(7);
 		}else if(orionUrl.indexOf("https://") < 0){
