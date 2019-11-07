@@ -291,6 +291,8 @@ The output message contains the following properties:
 	        name: { value: "" },
 	        url: { value: ""},
 	        port: {value: "", validate:RED.validators.number(), required: true}
+	        auth-url: { value: "", required: false},
+	        auth-port: {value: "", validate:RED.validators.number(), required: false}
 	    },
 	    credentials: {
 	    	user: {type:"text", required: false},
@@ -314,10 +316,12 @@ The output message contains the following properties:
 				if ($(this).is(":checked")) {
 					$('#node-config-input-user').val('');
 					$('#node-config-input-password').val('');
+					$('#node-config-input-auth-url').val('');
 					$(".node-config-input-useAuth-row").show();
 				} else {
 					$('#node-config-input-user').val('');
 					$('#node-config-input-password').val('');
+					$('#node-config-input-auth-url').val('');
 					$(".node-config-input-useAuth-row").hide();
 				}
 			});
@@ -329,6 +333,7 @@ The output message contains the following properties:
 				$(".node-config-input-useAuth-row").hide();
 				$('#node-config-input-user').val('');
 				$('#node-config-input-password').val('');
+				$('#node-config-input-auth-url').val('');
 			}
         }
 	});
